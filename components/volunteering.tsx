@@ -15,7 +15,7 @@ const volunteerActivities = [
     description:
       "Volunteered at DevFest Kochi '24 at XIME Kalamassery, engaging with developers and exploring the latest tech innovations. A great experience connecting with the community and contributing to the event's success.",
     date: "2024",
-    image: "/Images/volunteer/devfest.jpg",
+    image: "/community/devfest.jpg",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const volunteerActivities = [
     description:
       "Volunteered at the IEEE-MSIGMA Project Presentation, organized by IEEE Kerala Section & MSIGMA Gokulam. It was a rewarding experience contributing to the event, connecting with innovators, and learning from cutting-edge projects.",
     date: "2023",
-    image: "/Images/volunteer/IEEE-Msigma.jpeg",
+    image: "/community/IEEE-Msigma.jpeg",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const volunteerActivities = [
     description:
       "Attended the mu-learn Film Club Workshop at Kerala Startup Mission, gaining insights from industry experts on story narration and filmmaking. An enriching session that deepened my understanding of storytelling.",
     date: "2023",
-    image: "/Images/volunteer/filmworkshop.jpg",
+    image: "/community/filmworkshop.jpg",
   },
 ]
 

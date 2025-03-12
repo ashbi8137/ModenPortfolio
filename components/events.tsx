@@ -14,7 +14,7 @@ const events = [
     type: "Hackathon",
     description: "8 hours of innovation, creation, and impact-date confirmed, planning underway.",
     date: "2025",
-    image: "/Images/events/Hack_Europa.jpg",
+    image: "/event/Hack_Europa.jpg",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const events = [
     type: "Collaborative Event",
     description: "Led innovative solutions development and idea pitching for law enforcement challenges",
     date: "2025",
-    image: "/Images/events/Kochi police.jpg",
+    image: "/event/Kochi police.jpg",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const events = [
     type: "Hackathon",
     description: "18-hour overnight hackathon empowering women in tech",
     date: "2025",
-    image: "/Images/events/Tinkerhack.jpg",
+    image: "/event/Tinkerhack.jpg",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const events = [
     type: "Workshop",
     description: "Introduction to hackathons for newcomers",
     date: "2024",
-    image: "/Images/events/hackathon 101.jpg",
+    image: "/event/hackathon 101.jpg",
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const events = [
     type: "Networking Event",
     description: "Community networking and collaboration event",
     date: "2024",
-    image: "/Images/events/network nest.jpg",
+    image: "/event/network nest.jpg",
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ const events = [
     description:
       "Organized an immersive AR/VR workshop at Dhishna, the official techfest of CUSAT, introducing students to extended reality technologies.",
     date: "2023",
-    image: "/Images/events/AR.jpg",
+    image: "/event/AR.jpg",
   },
 ]
 

@@ -15,7 +15,7 @@ const hackathons = [
     description:
       "Secured first place in this prestigious hackathon, demonstrating excellence in problem-solving and technical implementation.",
     date: "2024",
-    image: "/Images/hackathons/hack tothe future.png",
+    image: "/hackathon/hack tothe future.png",
     achievement: "First Place",
   },
   {
@@ -24,7 +24,7 @@ const hackathons = [
     organization: "Cochin University of Science and Technology",
     description: "Developed innovative authentication solutions, securing victory in the Auth0 specialized track.",
     date: "2024",
-    image: "/Images/hackathons/SPARTANS-Ashbin P A_page-0001.jpg",
+    image: "/hackathon/SPARTANS-Ashbin P A_page-0001.jpg",
     achievement: "First place",
   },
   {
@@ -33,7 +33,7 @@ const hackathons = [
     organization: "Government Engineering College Thrissur",
     description: "Secured third place in this prestigious hackathon, by building a fun website",
     date: "2025",
-    image: "/Images/hackathons/code for nothing.jpg",
+    image: "/hackathon/code for nothing.jpg",
     achievement: "Third Place",
   },
   {
@@ -43,7 +43,7 @@ const hackathons = [
     description:
       "Secured second place with AnonReport, an anonymous crime reporting system powered by blockchain technology.",
     date: "2024",
-    image: "/Images/hackathons/EmergeXinnovate.jpg",
+    image: "/hackathon/EmergeXinnovate.jpg",
     achievement: null,
   },
   {
@@ -52,7 +52,7 @@ const hackathons = [
     organization: "IEEE CUSAT SB",
     description: "We tackled unique challenges together and brought our ideas to life.",
     date: "2024",
-    image: "/Images/hackathons/Ideathon-IEEE Cusat.jpg",
+    image: "/hackathon/Ideathon-IEEE Cusat.jpg",
     achievement: null,
   },
   {
@@ -62,7 +62,7 @@ const hackathons = [
     description:
       "Created a unique solution for digital accessibility, placing in the top 15 teams among global participants.",
     date: "2024",
-    image: "/Images/hackathons/code slush.jpg",
+    image: "/hackathon/code slush.jpg",
     achievement: null,
   },
 ]

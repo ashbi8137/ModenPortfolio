@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const technologies = [
   { name: "React Native", icon: "react" },
@@ -41,15 +42,15 @@ export default function About() {
             <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 animate-spin-slow"></div>
               <img
-                src="/Images/Profile.jpg"
+                src="/Profile.jpg"
                 alt="Ashbin P A"
                 className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-full"
               />
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold mb-2 gradient-text">Ashbin P A</h3>
-              <p className="text-muted-foreground mb-4">Tech Enthusiast & Community Builder</p>
+              <h3 className="text-2xl font-bold mb-2 gradient-text ">Ashbin P A</h3>
+              <p className="text-muted-foreground mb-4 text-left">Tech Enthusiast & Community Builder</p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
                   Program Facilitator

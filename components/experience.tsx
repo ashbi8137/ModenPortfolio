@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 const experiences = [
   {
     company: "TinkerHub",
-    logo: "/Images/company/tinkerhub.jpg",
+    logo: "/experience/tinkerhub.jpg",
     role: "Program Facilitator",
     period: "2024 - Present",
     responsibilities: [
@@ -17,7 +17,7 @@ const experiences = [
   },
   {
     company: "SAIT",
-    logo: "/Images/company/sait.png",
+    logo: "/experience/sait.png",
     role: "Event Lead",
     period: "2025 - Present",
     responsibilities: [
@@ -27,7 +27,7 @@ const experiences = [
   },
   {
     company: "Voyance Edutech",
-    logo: "/Images/company/voyance edutech.jpg",
+    logo: "/experience/voyance edutech.jpg",
     role: "Mathematics Tutor",
     period: "2023 - 2024",
     responsibilities: [

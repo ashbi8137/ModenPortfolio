@@ -56,16 +56,16 @@ const projects = [
     tags: ["Security", "AI"],
     description:
       "An automated passport verification system using facial recognition technology to enhance security and streamline identity verification processes.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://devfolio.co/projects/sentinel-shield-2e2f",
+    githubUrl: "https://github.com/ashbi8137/Sentinel-Shield",
   },
   {
     id: 7,
     title: "OurRupee",
     tags: ["Blockchain", "FinTech"],
     description: "A blockchain-based financial platform revolutionizing digital transactions and financial management.",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://devfolio.co/projects/ourrupee-2e2f",
+    githubUrl: "https://github.com/ashbi8137/OurRupee",
   },
 ]
 

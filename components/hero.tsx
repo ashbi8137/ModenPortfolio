@@ -175,13 +175,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <span className="text-sm text-muted-foreground mb-2">Scroll Down</span>
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
-        </div>
-      </div>
+      
     </section>
   )
 }
