@@ -67,6 +67,14 @@ const projects = [
     liveUrl: "https://devfolio.co/projects/ourrupee-2e2f",
     githubUrl: "https://github.com/ashbi8137/OurRupee",
   },
+  {
+    id: 8,
+    title: "Next_word",
+    tags: ["RNN", "Python"],
+    description: "A RNN based model to predict the next word in a sequence.",
+    liveUrl: "https://github.com/ashbi8137/Next_word",
+    githubUrl: "https://github.com/ashbi8137/Next_word",
+  },
 ]
 
 export default function Projects() {
