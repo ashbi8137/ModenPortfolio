@@ -9,6 +9,7 @@ const technologies = [
   { name: "React Native", icon: "react" },
   { name: "JavaScript", icon: "js" },
   { name: "Next.js", icon: "react" },
+  { name: "TypeScript", icon: "typescript" },
   { name: "Tailwind CSS", icon: "tailwind" },
   { name: "Python", icon: "python" },
   { name: "CSS", icon: "css" },
@@ -64,12 +65,10 @@ export default function About() {
 
           <Card className="p-6 bg-card/50 backdrop-blur-sm border border-border/50">
             <p className="text-foreground leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-primary first-letter:mr-1 first-letter:float-left">
-              I am a passionate tech enthusiast and community builder with a knack for organizing impactful events and
-              fostering innovation. With a strong belief in the power of collaboration, I thrive on creating spaces
-              where ideas come to life and individuals are empowered to grow. My journey in the tech world has been
-              shaped by leading initiatives that inspire creativity, solve real-world problems, and promote inclusivity.
-              Whether it's through hackathons, networking events, or volunteering, I am driven by the desire to connect
-              people and make a meaningful impact in the tech ecosystem.
+            Passionate tech enthusiast and community builder, driven by collaboration and innovation. 
+            I thrive on organizing impactful events, fostering creativity, and solving real-world problems.
+             Through hackathons, networking, and volunteering, I connect people and create spaces for growth
+              and inclusivity in the tech ecosystem.
             </p>
           </Card>
         </motion.div>

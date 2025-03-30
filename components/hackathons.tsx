@@ -10,6 +10,16 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 const hackathons = [
   {
     id: 1,
+    title: "Hack_Europa",
+    organization: "SAIT-CUSAT",
+    description:
+      "Secured first place for best Project Implementation, showcasing innovative solutions and technical excellence.",
+    date: "2024",
+    image: "/hackathon/Hack_Europa.jpg",
+    achievement: "First Place",
+  },
+  {
+    id: 2,
     title: "Hack to the Future",
     organization: "IEEE-SB Manipal University Jaipur",
     description:
@@ -19,7 +29,7 @@ const hackathons = [
     achievement: "First Place",
   },
   {
-    id: 2,
+    id: 3,
     title: "Make-a-Ton",
     organization: "Cochin University of Science and Technology",
     description: "Developed innovative authentication solutions, securing victory in the Auth0 specialized track.",
@@ -28,7 +38,7 @@ const hackathons = [
     achievement: "First place",
   },
   {
-    id: 3,
+    id: 4,
     title: "Hack for nothing",
     organization: "Government Engineering College Thrissur",
     description: "Secured third place in this prestigious hackathon, by building a fun website",
@@ -37,7 +47,7 @@ const hackathons = [
     achievement: "Third Place",
   },
   {
-    id: 4,
+    id: 5,
     title: "EMERGE-X INNOVATIVE Buildathon",
     organization: "Kerala Blockchain Academy, Trivandrum",
     description:
@@ -47,7 +57,7 @@ const hackathons = [
     achievement: null,
   },
   {
-    id: 5,
+    id: 6,
     title: "Botjungle x ECSA - Ideathon",
     organization: "IEEE CUSAT SB",
     description: "We tackled unique challenges together and brought our ideas to life.",
@@ -56,7 +66,7 @@ const hackathons = [
     achievement: null,
   },
   {
-    id: 6,
+    id: 7,
     title: "Code Slush",
     organization: "Innovation Track",
     description:

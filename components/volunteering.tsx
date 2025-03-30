@@ -10,6 +10,15 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 const volunteerActivities = [
   {
     id: 1,
+    title: "Vibhava Innovation Summit",
+    role: "Tech Volunteer",
+    description:
+      "Led the development and management of the event website, ensuring seamless user experience and real-time updates throughout the innovation summit.",
+    date: "2025",
+    image: "/community/vibhava.jpg",
+  },
+  {
+    id: 2,
     title: "DevFest Kochi '24",
     role: "Event Volunteer",
     description:
@@ -18,7 +27,7 @@ const volunteerActivities = [
     image: "/community/devfest.jpg",
   },
   {
-    id: 2,
+    id: 3,
     title: "IEEE-MSIGMA",
     role: "Hospitality Volunteer",
     description:
@@ -27,7 +36,7 @@ const volunteerActivities = [
     image: "/community/IEEE-Msigma.jpeg",
   },
   {
-    id: 3,
+    id: 4,
     title: "Mu-learn Workshop",
     role: "Event Volunteer",
     description:

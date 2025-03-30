@@ -6,10 +6,21 @@ import { Badge } from "@/components/ui/badge"
 
 const experiences = [
   {
-    company: "TinkerHub",
+    company: "COGNIFYZ TECHNOLOGIES",
+    logo: "/experience/cognifyz.png",
+    role: "FRONTEND DEVELOPER INTERN",
+    period: "Mar 2025 - Present",
+    responsibilities: [
+      "Building web apps with Next.js, TailwindCSS, and TypeScript",
+      "Working with teams to create scalable solutions",
+      "Optimizing app performance and UX",
+    ],
+  },
+  {
+    company: "TINKERHUB",
     logo: "/experience/tinkerhub.jpg",
-    role: "Program Facilitator",
-    period: "2024 - Present",
+    role: "PROGRAM FACILITATOR",
+    period: "Jan 2024 - Present",
     responsibilities: [
       "Leading technical workshops and community initiatives",
       "Mentoring students in technology and innovation",
@@ -18,18 +29,18 @@ const experiences = [
   {
     company: "SAIT",
     logo: "/experience/sait.png",
-    role: "Event Lead",
-    period: "2025 - Present",
+    role: "EVENT LEAD",
+    period: "Jan 2024 - Present",
     responsibilities: [
       "Event Planning and Coordination",
       "Collaborating with the team to develop creative and engaging events",
     ],
   },
   {
-    company: "Voyance Edutech",
+    company: "VOYANCE EDUTECH",
     logo: "/experience/voyance edutech.jpg",
-    role: "Mathematics Tutor",
-    period: "2023 - 2024",
+    role: "MATHEMATICS TUTOR",
+    period: "Jan 2023 - Dec 2024",
     responsibilities: [
       "Provided comprehensive mathematics tutoring to engineering students",
       "Developed engaging teaching materials and practice problems",
@@ -80,9 +91,9 @@ function TimelineItem({ experience, index }: { experience: any; index: number })
                 className="w-full h-full object-contain"
               />
             </div>
-            <div>
-              <h3 className="text-xl font-bold">{experience.company}</h3>
-              <Badge variant="outline" className="mt-1 bg-primary/10 text-primary border-primary/20">
+            <div className="flex flex-col items-start">
+              <h3 className="text-xl font-bold mb-1">{experience.company}</h3>
+              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
                 {experience.role}
               </Badge>
             </div>

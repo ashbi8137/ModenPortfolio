@@ -11,7 +11,7 @@ const roles = [
   "Tech Innovator",
   "Community Builder",
   "Android Developer",
-  "Web Developer",
+  "Front-end Developer",
 ]
 
 export default function Hero() {
