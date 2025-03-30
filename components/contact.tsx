@@ -26,7 +26,7 @@ export default function Contact() {
   }>({ type: null, message: '' });
 
   // Add state for notification style
-  const [successStyle, setSuccessStyle] = useState(0);
+  const [successStyle, setSuccessStyle] = useState<number>(0);
 
   // Initialize EmailJS
   useEffect(() => {
@@ -276,108 +276,107 @@ export default function Contact() {
                 </Button>
                 
                 {notification.type === 'success' && successStyle === 0 && (
-                  <div className="mt-6 overflow-hidden">
-                    <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg p-5 shadow-lg transform transition-all duration-500 ease-in-out hover:scale-[1.02]">
+                  <div className="mt-4">
+                    <div className="bg-card border border-border rounded-md p-4 shadow-sm backdrop-blur-sm">
                       <div className="flex items-center">
-                        <div className="mr-4 flex-shrink-0">
-                          <div className="relative">
-                            <div className="animate-ping absolute h-full w-full rounded-full bg-white opacity-75"></div>
-                            <svg className="relative h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <div className="mr-3 flex-shrink-0">
+                          <div className="bg-primary/10 rounded-full p-1.5">
+                            <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                             </svg>
                           </div>
                         </div>
-                        <div>
-                          <h3 className="text-lg font-bold mb-1">Message Sent Successfully!</h3>
-                          <p className="opacity-90">{notification.message}</p>
-                          <div className="mt-2 flex space-x-2">
-                            <a href="mailto:ashputhusseri@gmail.com" className="text-xs bg-white bg-opacity-25 hover:bg-opacity-40 px-2 py-1 rounded-full transition-all duration-200">
-                              Email Again
-                            </a>
-                            <button 
-                              onClick={() => setNotification({ type: null, message: '' })}
-                              className="text-xs bg-white bg-opacity-25 hover:bg-opacity-40 px-2 py-1 rounded-full transition-all duration-200"
-                              type="button"
-                            >
-                              Dismiss
-                            </button>
-                          </div>
+                        <div className="flex-1">
+                          <h3 className="text-sm font-medium">Message Sent</h3>
+                          <p className="text-xs text-muted-foreground mt-0.5">{notification.message}</p>
                         </div>
+                        <button 
+                          onClick={() => setNotification({ type: null, message: '' })}
+                          className="ml-2 text-muted-foreground hover:text-foreground transition-colors"
+                          type="button"
+                        >
+                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
                 )}
                 
                 {notification.type === 'success' && successStyle === 1 && (
-                  <div className="mt-6">
-                    <div className="bg-white dark:bg-slate-800 border-l-4 border-green-500 p-5 shadow-md rounded-r-lg">
-                      <div className="flex">
-                        <div className="flex-shrink-0">
-                          <svg className="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-green-800 dark:text-green-400">Success!</div>
-                          <div className="mt-1 text-sm text-slate-700 dark:text-slate-300">{notification.message}</div>
-                          <div className="mt-2">
-                            <button
-                              type="button"
-                              onClick={() => setNotification({ type: null, message: '' })}
-                              className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none"
-                            >
-                              Got it
-                            </button>
+                  <div className="mt-4">
+                    <div className="bg-gradient-to-r from-primary/10 to-card border border-border rounded-md p-4 shadow-sm">
+                      <div className="flex items-center">
+                        <div className="flex-1">
+                          <div className="flex items-center">
+                            <div className="bg-primary/10 rounded-full p-1 mr-2">
+                              <svg className="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                            <h3 className="text-sm font-medium">Message Sent Successfully</h3>
                           </div>
+                          <p className="text-xs text-muted-foreground mt-1.5 ml-7">{notification.message}</p>
                         </div>
+                        <button 
+                          onClick={() => setNotification({ type: null, message: '' })}
+                          className="ml-2 text-muted-foreground hover:text-foreground transition-colors"
+                          type="button"
+                        >
+                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
                 )}
 
                 {notification.type === 'success' && successStyle === 2 && (
-                  <div className="mt-6">
-                    <div className="relative py-6 px-6 bg-gradient-to-br from-purple-600 to-indigo-600 text-white rounded-xl shadow-lg overflow-hidden">
-                      {/* Decorative elements */}
-                      <div className="absolute top-0 left-0 w-40 h-40 -mt-16 -ml-20 bg-white bg-opacity-10 rounded-full"></div>
-                      <div className="absolute bottom-0 right-0 w-40 h-40 -mb-16 -mr-20 bg-white bg-opacity-10 rounded-full"></div>
-                      
-                      <div className="relative">
-                        <div className="flex items-center justify-center mb-4">
-                          <span className="flex h-14 w-14 bg-white bg-opacity-20 rounded-full items-center justify-center">
-                            <svg className="h-9 w-9 text-white animate-pulse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                  <div className="mt-4">
+                    <div className="border border-accent/30 bg-accent/5 rounded-md p-4 shadow-sm backdrop-blur-sm">
+                      <div className="flex items-center">
+                        <div className="mr-3 flex-shrink-0">
+                          <div className="relative">
+                            <div className="animate-ping absolute h-full w-full rounded-full bg-accent opacity-30"></div>
+                            <svg className="relative h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                          </span>
+                          </div>
                         </div>
-                        <h2 className="text-xl font-bold text-center mb-2">Message Sent!</h2>
-                        <p className="text-center text-white text-opacity-80 mb-4">{notification.message}</p>
-                        <div className="text-center">
-                          <button
-                            onClick={() => setNotification({ type: null, message: '' })}
-                            className="px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full text-sm font-medium text-white transition-all duration-200"
-                            type="button"
-                          >
-                            Close
-                          </button>
+                        <div className="flex-1">
+                          <h3 className="text-sm font-medium text-accent-foreground">Success!</h3>
+                          <p className="text-xs text-muted-foreground mt-0.5">{notification.message}</p>
                         </div>
+                        <button 
+                          onClick={() => setNotification({ type: null, message: '' })}
+                          className="ml-2 text-muted-foreground hover:text-foreground transition-colors"
+                          type="button"
+                        >
+                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
                 )}
                 
                 {notification.type === 'error' && (
-                  <div className="mt-6 p-4 rounded-md relative bg-red-50 text-red-800 border border-red-200">
-                    <button 
-                      onClick={() => setNotification({ type: null, message: '' })}
-                      className="absolute top-2 right-2 text-xs opacity-70 hover:opacity-100"
-                      type="button"
-                    >
-                      ✕
-                    </button>
+                  <div className="mt-4 p-3 rounded-md relative bg-red-50/50 text-red-800 border border-red-200/70">
                     <div className="flex items-center">
-                      <span className="text-lg mr-2">❌</span>
-                      <p>{notification.message}</p>
+                      <span className="text-sm mr-2">❌</span>
+                      <p className="text-xs">{notification.message}</p>
+                      <button 
+                        onClick={() => setNotification({ type: null, message: '' })}
+                        className="ml-auto text-red-400 hover:text-red-600 transition-colors"
+                        type="button"
+                      >
+                        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 )}
