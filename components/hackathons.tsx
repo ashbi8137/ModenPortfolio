@@ -5,7 +5,8 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Award } from "lucide-react"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 const hackathons = [
   {
@@ -118,6 +119,9 @@ export default function Hackathons() {
                     </button>
                   </DialogTrigger>
                   <DialogContent className="max-w-3xl p-0 overflow-hidden bg-transparent border-none">
+                    <DialogTitle>
+                      <VisuallyHidden>Hackathon Image</VisuallyHidden>
+                    </DialogTitle>
                     <img
                       src={selectedImage || ""}
                       alt="Hackathon"

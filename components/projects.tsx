@@ -5,8 +5,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Maximize2 } from "lucide-react"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { useState } from "react"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 const projects = [
   {
@@ -143,6 +144,9 @@ export default function Projects() {
                       </button>
                     </DialogTrigger>
                     <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none">
+                      <DialogTitle>
+                        <VisuallyHidden>Project Preview Image</VisuallyHidden>
+                      </DialogTitle>
                       <img
                         src={selectedImage || ""}
                         alt="Project Preview"

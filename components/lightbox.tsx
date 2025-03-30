@@ -3,8 +3,9 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { X } from "lucide-react"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 interface LightboxProps {
   src: string
@@ -32,6 +33,9 @@ export default function Lightbox({ src, alt, children }: LightboxProps) {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-w-5xl p-0 border-none bg-transparent">
+        <DialogTitle>
+          <VisuallyHidden>Image Preview</VisuallyHidden>
+        </DialogTitle>
         <div className="relative">
           <button
             className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/70 transition-colors"

@@ -5,7 +5,8 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar } from "lucide-react"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 const events = [
   {
@@ -91,6 +92,9 @@ export default function Events() {
                     </button>
                   </DialogTrigger>
                   <DialogContent className="max-w-3xl p-0 overflow-hidden bg-transparent border-none">
+                    <DialogTitle>
+                      <VisuallyHidden>Event Image</VisuallyHidden>
+                    </DialogTitle>
                     <img src={selectedImage || ""} alt="Event" className="w-full h-auto max-h-[80vh] object-contain" />
                   </DialogContent>
                 </Dialog>
