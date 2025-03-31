@@ -20,7 +20,7 @@ const experiences = [
     company: "TINKERHUB",
     logo: "/experience/tinkerhub.jpg",
     role: "PROGRAM FACILITATOR",
-    period: "Jan 2024 - Present",
+    period: "Jan 2025 - Present",
     responsibilities: [
       "Leading technical workshops and community initiatives",
       "Mentoring students in technology and innovation",
