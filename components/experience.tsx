@@ -6,17 +6,6 @@ import { Badge } from "@/components/ui/badge"
 
 const experiences = [
   {
-    company: "COGNIFYZ TECHNOLOGIES",
-    logo: "/experience/cognifyz.png",
-    role: "FRONTEND DEVELOPER INTERN",
-    period: "Mar 2025 - Present",
-    responsibilities: [
-      "Building web apps with Next.js, TailwindCSS, and TypeScript",
-      "Working with teams to create scalable solutions",
-      "Optimizing app performance and UX",
-    ],
-  },
-  {
     company: "TINKERHUB",
     logo: "/experience/tinkerhub.jpg",
     role: "PROGRAM FACILITATOR",
