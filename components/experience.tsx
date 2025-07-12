@@ -5,24 +5,37 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 const experiences = [
+   {
+  company: "SAIT-CUSAT",
+  logo: "/experience/sait.png",
+  role: "EVENT LEAD",
+  period: "Jan 2024 - Present",
+  responsibilities: [
+    "Leading the planning, execution, and management of tech-focused student events",
+    "Collaborating with cross-functional teams to deliver impactful and engaging programs",
+    "Driving student participation through innovative outreach and communication strategies",
+  ],
+},
+{
+  company: "Department of Automation Cell, IIT Palakkad",
+  logo: "/experience/IIT_PKD_logo.jpg", // Ensure this image exists in your assets
+  role: "RESEARCH INTERN",
+  period: "May 2025 – July 2025",
+  responsibilities: [
+    "Contributed to the ERP system used across IITs using Angular and Bootstrap",
+    "Developed the FA Approval and Final Transcript components",
+    "Collaborated with the team using shared utilities and iterative development cycles",
+  ],
+},
+
   {
-    company: "TINKERHUB",
+    company: "TINKERHUB-SOE",
     logo: "/experience/tinkerhub.jpg",
     role: "PROGRAM FACILITATOR",
-    period: "Jan 2025 - Present",
+    period: "Jan 2025 - July 2025",
     responsibilities: [
       "Leading technical workshops and community initiatives",
       "Mentoring students in technology and innovation",
-    ],
-  },
-  {
-    company: "SAIT",
-    logo: "/experience/sait.png",
-    role: "EVENT LEAD",
-    period: "Jan 2024 - Present",
-    responsibilities: [
-      "Event Planning and Coordination",
-      "Collaborating with the team to develop creative and engaging events",
     ],
   },
   {

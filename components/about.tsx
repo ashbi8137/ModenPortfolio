@@ -6,16 +6,25 @@ import { Card } from "@/components/ui/card"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const technologies = [
-  { name: "React Native", icon: "react" },
+  // Core Frontend Technologies
   { name: "JavaScript", icon: "js" },
-  { name: "Next.js", icon: "react" },
   { name: "TypeScript", icon: "typescript" },
+  { name: "Angular", icon: "angular" },
+  { name: "React Native", icon: "react" },
+  { name: "Next.js", icon: "react" },
+
+  // Styling Frameworks
   { name: "Tailwind CSS", icon: "tailwind" },
-  { name: "Python", icon: "python" },
+  { name: "Bootstrap", icon: "bootstrap" },
   { name: "CSS", icon: "css" },
-  { name: "Supabase", icon: "database" },
+
+  // Backend / DB / Serverless
+  { name: "C++", icon: "C++" },
+  { name: "Python", icon: "python" },
   { name: "SQL", icon: "database" },
-]
+  { name: "Supabase", icon: "database" },
+];
+
 
 const skills = [
   "Event Management",
