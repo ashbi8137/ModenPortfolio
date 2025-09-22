@@ -121,7 +121,7 @@ export default function Hero() {
             transition={{ delay: 1, duration: 0.8 }}
           >
             <Button size="lg" className="w-full sm:w-auto group" asChild>
-              <a href="/RESUME.pdf" download="RESUME.pdf">
+              <a href="/resume_Pmail.pdf" download="resume_Pmail.pdf">
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 Download CV
               </a>
