@@ -1,47 +1,94 @@
 "use client"
 
-import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 export default function BackgroundElements() {
-  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
+  // Generate random particles
+  const particles = Array.from({ length: 30 }).map((_, i) => ({
+    id: i,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    duration: Math.random() * 20 + 20,
+    delay: Math.random() * 10,
+    size: Math.random() * 2 + 1, // 1px to 3px
+  }))
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Grid pattern */}
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      {/* 1. Base Grain Layer (Texture) */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
         style={{
-          backgroundImage: `linear-gradient(to right, hsl(var(--primary)/0.2) 1px, transparent 1px), 
-                            linear-gradient(to bottom, hsl(var(--primary)/0.2) 1px, transparent 1px)`,
-          backgroundSize: "50px 50px",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full opacity-[0.15] blur-[100px] bg-primary/30" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full opacity-[0.1] blur-[100px] bg-accent/30" />
+      {/* 2. Gold Dust Particles */}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full bg-primary/40 shadow-[0_0_8px_currentColor]"
+          style={{
+            top: particle.top,
+            left: particle.left,
+            width: particle.size,
+            height: particle.size,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            opacity: [0, 0.6, 0],
+            scale: [0.5, 1.2, 0.5],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
 
-      {/* Accent lines */}
-      <div className="absolute top-1/4 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="absolute top-3/4 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
-
-      {/* Floating dots */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `radial-gradient(hsl(var(--primary)/0.7) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
+      {/* 3. Midnight Aurora Gradients (Refined for Luxury) */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+          rotate: [0, 15, 0]
         }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-[30%] -right-[10%] w-[1000px] h-[1000px] rounded-full bg-primary/10 blur-[150px]"
       />
 
-      {/* Diagonal accent */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `repeating-linear-gradient(45deg, hsl(var(--primary)), hsl(var(--primary)) 1px, transparent 1px, transparent 10px)`,
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [0, -40, 0],
+          y: [0, 40, 0]
         }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[20%] -left-[20%] w-[800px] h-[800px] rounded-full bg-accent/5 blur-[120px]"
       />
+
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          x: [0, 60, 0],
+        }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute -bottom-[20%] right-[20%] w-[900px] h-[900px] rounded-full bg-primary/5 blur-[140px]"
+      />
+
+      {/* 4. Vignette (Focus on Center) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/90" />
     </div>
   )
 }
-

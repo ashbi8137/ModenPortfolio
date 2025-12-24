@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, Users } from "lucide-react"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import { RevealOnScroll } from "@/components/RevealOnScroll"
 
 const volunteerActivities = [
   {
@@ -51,61 +52,57 @@ export default function Volunteering() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   return (
-    <section id="volunteering" className="relative">
-      <h2 className="section-title">Community Involvement</h2>
+    <section id="volunteering" className="relative py-24">
+      <div className="container max-w-7xl mx-auto px-6">
+        <RevealOnScroll className="w-full text-center mb-16">
+          <h2 className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-3">Giving Back</h2>
+          <h3 className="section-title font-serif text-4xl md:text-5xl">Community <span className="text-primary italic">Involvement</span></h3>
+        </RevealOnScroll>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-        {volunteerActivities.map((activity, index) => (
-          <motion.div
-            key={activity.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <Card className="overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm border-border/50">
-              <div className="relative h-48 overflow-hidden">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <button className="w-full h-full" onClick={() => setSelectedImage(activity.image)}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          {volunteerActivities.map((activity, index) => (
+            <RevealOnScroll key={activity.id} delay={index * 0.1} className="h-full" width="100%">
+              <Card className="group h-full flex flex-col overflow-hidden border border-border/40 bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1">
+                <div className="relative h-56 overflow-hidden">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="w-full h-full cursor-zoom-in" onClick={() => setSelectedImage(activity.image)}>
+                        <img
+                          src={activity.image || "/placeholder.svg"}
+                          alt={activity.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <span className="text-white text-xs font-bold tracking-wider border border-white/30 px-4 py-2 rounded-full backdrop-blur-md">VIEW IMAGE</span>
+                        </div>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none shadow-2xl">
+                      <DialogTitle>
+                        <VisuallyHidden>{activity.title}</VisuallyHidden>
+                      </DialogTitle>
                       <img
-                        src={activity.image || "/placeholder.svg"}
+                        src={selectedImage || ""}
                         alt={activity.title}
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                        className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
                       />
-                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <span className="text-white text-sm font-medium">View Larger</span>
-                      </div>
-                    </button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-3xl p-0 overflow-hidden bg-transparent border-none">
-                    <DialogTitle>
-                      <VisuallyHidden>Volunteer Activity Image</VisuallyHidden>
-                    </DialogTitle>
-                    <img
-                      src={selectedImage || ""}
-                      alt="Volunteer Activity"
-                      className="w-full h-auto max-h-[80vh] object-contain"
-                    />
-                  </DialogContent>
-                </Dialog>
-              </div>
-
-              <CardContent className="p-5 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-2">{activity.title}</h3>
-                <Badge className="w-fit mb-3 bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
-                  <Users className="h-3.5 w-3.5" />
-                  {activity.role}
-                </Badge>
-                <p className="text-muted-foreground text-sm mb-4 flex-grow">{activity.description}</p>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  <span>{activity.date}</span>
+                    </DialogContent>
+                  </Dialog>
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+
+                <CardContent className="p-6 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">{activity.role}</Badge>
+                    <span className="text-xs font-mono text-muted-foreground">{activity.date}</span>
+                  </div>
+
+                  <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{activity.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed flex-grow">{activity.description}</p>
+                </CardContent>
+              </Card>
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
     </section>
   )

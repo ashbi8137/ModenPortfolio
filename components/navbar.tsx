@@ -1,41 +1,37 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
-import { Moon, Sun, Menu, X } from "lucide-react"
+import { Moon, Sun, Menu, X, Home, User, Briefcase, Calendar, Code, Mail } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useMobile } from "@/hooks/use-mobile"
+import { motion, AnimatePresence } from "framer-motion"
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Events", href: "#events" },
-  { name: "Hackathons", href: "#hackathons" },
-  { name: "Volunteering", href: "#volunteering" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#home", icon: Home },
+  { name: "About", href: "#about", icon: User },
+  { name: "Experience", href: "#experience", icon: Briefcase },
+  { name: "Projects", href: "#projects", icon: Code },
+  { name: "Events", href: "#events", icon: Calendar },
+  { name: "Contact", href: "#contact", icon: Mail },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState("")
+  const [activeSection, setActiveSection] = useState("home")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
-  const isMobile = useMobile()
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
-      // Navbar background change on scroll
-      setScrolled(window.scrollY > 50)
-
-      // Active section detection
       const sections = document.querySelectorAll("section[id]")
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY + 300 // Offset for better triggering
 
       sections.forEach((section) => {
         const sectionTop = (section as HTMLElement).offsetTop
@@ -50,11 +46,9 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll)
     handleScroll() // Initial check
-
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Smooth scroll function
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     const element = document.querySelector(href)
@@ -64,113 +58,128 @@ export default function Navbar() {
     }
   }
 
-  return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-        scrolled ? "py-3 bg-background/95 backdrop-blur-md border-b shadow-sm" : "py-5 bg-transparent",
-      )}
-    >
-      <div className="container max-w-7xl mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
-        <a
-          href="#home"
-          className="text-2xl font-bold font-poppins relative"
-          onClick={(e) => scrollToSection(e, "#home")}
-        >
-          <span className="gradient-text">ashbin</span>
-          <span className="absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-accent rounded-full"></span>
-        </a>
+  if (!mounted) return null
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <ul className="flex items-center space-x-8">
+  return (
+    <>
+      {/* Desktop Floating Pill Navbar */}
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block">
+        <nav className="flex items-center gap-1 p-2 rounded-full border border-white/10 bg-background/60 backdrop-blur-xl shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+
+          <ul className="flex items-center gap-1">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
                   className={cn(
-                    "text-sm font-medium transition-colors relative py-2",
+                    "relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2",
                     activeSection === link.href.substring(1)
-                      ? "text-primary font-semibold"
-                      : "text-muted-foreground hover:text-foreground",
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   )}
                 >
-                  {link.name}
                   {activeSection === link.href.substring(1) && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent"></span>
+                    <motion.div
+                      layoutId="bubble"
+                      className="absolute inset-0 bg-primary rounded-full -z-10"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
                   )}
+                  <link.icon className="w-4 h-4" />
+                  <span>{link.name}</span>
                 </a>
               </li>
             ))}
           </ul>
+
+          <div className="w-px h-6 bg-border mx-2" />
 
           {/* Theme Toggle */}
           <Button
             variant="ghost"
             size="icon"
+            className="rounded-full hover:bg-muted/50"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             aria-label="Toggle theme"
           >
-            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5 text-yellow-500 transition-all" />
+            ) : (
+              <Moon className="h-5 w-5 text-slate-700 transition-all" />
+            )}
           </Button>
         </nav>
-
-        {/* Mobile Menu Button */}
-        <div className="flex items-center md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-            className="mr-2"
-          >
-            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
-        </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "md:hidden fixed inset-x-0 top-[57px] bg-background/95 backdrop-blur-md border-b shadow-md transition-all duration-300 overflow-hidden",
-          mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0",
+      {/* Mobile Floating Bar */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-[90%] max-w-sm">
+        <nav className="flex items-center justify-between p-3 rounded-2xl border border-white/10 bg-background/80 backdrop-blur-2xl shadow-2xl">
+          <a
+            href="#home"
+            className="text-lg font-bold font-serif px-3"
+            onClick={(e) => scrollToSection(e, "#home")}
+          >
+            A.
+          </a>
+
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5 text-yellow-500" />
+              ) : (
+                <Moon className="h-5 w-5 text-slate-700" />
+              )}
+            </Button>
+
+            <Button
+              variant="default"
+              size="icon"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="rounded-full bg-primary text-primary-foreground"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
+        </nav>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            className="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-sm bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-4 shadow-2xl z-40 md:hidden"
+          >
+            <ul className="grid grid-cols-2 gap-2">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => scrollToSection(e, link.href)}
+                    className={cn(
+                      "flex flex-col items-center justify-center p-4 rounded-xl transition-all",
+                      activeSection === link.href.substring(1)
+                        ? "bg-primary/10 text-primary border border-primary/20"
+                        : "hover:bg-muted text-muted-foreground"
+                    )}
+                  >
+                    <link.icon className="w-6 h-6 mb-2" />
+                    <span className="text-sm font-medium">{link.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         )}
-      >
-        <nav className="container py-4">
-          <ul className="flex flex-col space-y-1">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
-                  className={cn(
-                    "flex items-center justify-center py-3 text-sm font-medium transition-colors",
-                    activeSection === link.href.substring(1)
-                      ? "text-primary bg-primary/5 font-semibold"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                  )}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </header>
+      </AnimatePresence>
+    </>
   )
 }
 

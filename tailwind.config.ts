@@ -60,9 +60,8 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        inter: ["var(--font-inter)"],
-        poppins: ["var(--font-poppins)"],
-        montserrat: ["var(--font-montserrat)"],
+        sans: ["var(--font-manrope)", "sans-serif"],
+        serif: ["var(--font-playfair)", "serif"],
       },
       keyframes: {
         "accordion-down": {

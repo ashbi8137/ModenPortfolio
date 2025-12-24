@@ -52,65 +52,60 @@ export default function Hero() {
   }, [displayText, roleIndex, isDeleting, typingSpeed])
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-32 pb-20 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
-      </div>
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background"></div>
 
-      <div className="container max-w-5xl">
+      <div className="container max-w-5xl px-6">
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Badge */}
           <motion.div
-            className="inline-block mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="inline-block mb-8"
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <span className="px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm inline-flex items-center">
-              <span className="mr-2">👋</span> Hey, I'm
+            <span className="px-5 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs uppercase tracking-widest font-medium backdrop-blur-sm">
+              Designing the Future
             </span>
           </motion.div>
 
           {/* Name */}
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-6xl md:text-8xl font-bold font-serif mb-8 tracking-tight leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1 }}
           >
-            <span className="gradient-text">Ashbin</span> <span className="text-foreground">P A</span>
+            <span className="text-foreground">Ashbin</span> <span className="text-primary italic">P A</span>
           </motion.h1>
 
           {/* Typing Effect */}
           <motion.div
-            className="h-10 mb-8"
+            className="h-8 mb-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 1 }}
           >
-            <span className="text-xl md:text-2xl text-muted-foreground font-medium">
-              {displayText}
-              <span className="inline-block w-1 h-6 ml-1 bg-accent animate-pulse"></span>
+            <span className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
+              I am a <span className="font-normal text-foreground">{displayText}</span>
+              <span className="inline-block w-[1px] h-5 ml-1 bg-primary animate-pulse"></span>
             </span>
           </motion.div>
 
           {/* Description */}
           <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 italic font-montserrat relative px-8"
+            className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
+            transition={{ delay: 0.7, duration: 1 }}
           >
-            <span className="absolute left-0 top-0 text-4xl text-accent opacity-50">"</span>
-            Crafting digital experiences and building communities through innovative tech events and hackathons.
-            <span className="absolute right-0 bottom-0 text-4xl text-accent opacity-50">"</span>
+            Crafting premium digital experiences and building communities through innovative tech events and hackathons.
           </motion.p>
 
           {/* Buttons */}
@@ -175,7 +170,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      
+
     </section>
   )
 }
