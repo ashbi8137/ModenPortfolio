@@ -7,7 +7,7 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: process.env.GITHUB_ACTIONS ? 'export' : undefined,
   eslint: {
     ignoreDuringBuilds: true,
   },
