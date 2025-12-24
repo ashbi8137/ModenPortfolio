@@ -33,10 +33,11 @@ export default function BackgroundElements() {
       />
 
       {/* 2. Gold Dust Particles */}
-      {particles.map((particle) => (
+      {particles.map((particle, i) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-primary/40 shadow-[0_0_8px_currentColor]"
+          className={`absolute rounded-full bg-primary/40 shadow-[0_0_8px_currentColor] ${i > 8 ? "hidden md:block" : ""
+            }`}
           style={{
             top: particle.top,
             left: particle.left,
@@ -65,7 +66,7 @@ export default function BackgroundElements() {
           rotate: [0, 15, 0]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-[30%] -right-[10%] w-[1000px] h-[1000px] rounded-full bg-primary/10 blur-[150px]"
+        className="absolute -top-[30%] -right-[10%] w-[300px] h-[300px] md:w-[1000px] md:h-[1000px] rounded-full bg-primary/10 blur-[80px] md:blur-[150px]"
       />
 
       <motion.div
@@ -75,7 +76,7 @@ export default function BackgroundElements() {
           y: [0, 40, 0]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[20%] -left-[20%] w-[800px] h-[800px] rounded-full bg-accent/5 blur-[120px]"
+        className="absolute top-[20%] -left-[20%] w-[250px] h-[250px] md:w-[800px] md:h-[800px] rounded-full bg-accent/5 blur-[60px] md:blur-[120px]"
       />
 
       <motion.div
@@ -84,7 +85,7 @@ export default function BackgroundElements() {
           x: [0, 60, 0],
         }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="absolute -bottom-[20%] right-[20%] w-[900px] h-[900px] rounded-full bg-primary/5 blur-[140px]"
+        className="absolute -bottom-[20%] right-[20%] w-[300px] h-[300px] md:w-[900px] md:h-[900px] rounded-full bg-primary/5 blur-[70px] md:blur-[140px]"
       />
 
       {/* 4. Vignette (Focus on Center) */}

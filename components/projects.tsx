@@ -125,7 +125,7 @@ export default function Projects() {
         </RevealOnScroll>
 
         {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[300px] grid-flow-dense">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[300px] md:grid-flow-dense">
           {projects.map((project, index) => (
             <BentoCard key={project.id} project={project} index={index} />
           ))}
