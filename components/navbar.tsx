@@ -112,68 +112,63 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Floating Bar */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-[90%] max-w-sm">
-        <nav className="flex items-center justify-between p-3 rounded-2xl border border-white/10 bg-background/80 backdrop-blur-2xl shadow-2xl">
-          <a
-            href="#home"
-            className="text-lg font-bold font-serif px-3"
-            onClick={(e) => scrollToSection(e, "#home")}
-          >
-            A.
-          </a>
+      {/* Mobile Top-Right Trigger */}
+      <div className="fixed top-5 right-5 z-50 md:hidden flex items-center gap-3">
+        {/* Mobile Theme Toggle */}
+        <Button
+          variant="secondary"
+          size="icon"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="rounded-full shadow-lg border border-primary/20 bg-background/80 backdrop-blur-md"
+        >
+          {theme === "dark" ? (
+            <Sun className="h-5 w-5 text-yellow-500" />
+          ) : (
+            <Moon className="h-5 w-5 text-slate-700" />
+          )}
+        </Button>
 
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5 text-yellow-500" />
-              ) : (
-                <Moon className="h-5 w-5 text-slate-700" />
-              )}
-            </Button>
-
-            <Button
-              variant="default"
-              size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="rounded-full bg-primary text-primary-foreground"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </nav>
+        {/* Mobile Menu Button */}
+        <Button
+          variant="default"
+          size="icon"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="rounded-full shadow-lg bg-primary hover:bg-primary/90 text-primary-foreground"
+        >
+          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </Button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay (Fullscreen) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-sm bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-4 shadow-2xl z-40 md:hidden"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-background/95 backdrop-blur-xl z-40 md:hidden flex flex-col items-center justify-center"
           >
-            <ul className="grid grid-cols-2 gap-2">
-              {navLinks.map((link) => (
-                <li key={link.name}>
+            <ul className="flex flex-col items-center gap-8">
+              {navLinks.map((link, i) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.1 }}
+                >
                   <a
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
                     className={cn(
-                      "flex flex-col items-center justify-center p-4 rounded-xl transition-all",
-                      activeSection === link.href.substring(1)
-                        ? "bg-primary/10 text-primary border border-primary/20"
-                        : "hover:bg-muted text-muted-foreground"
+                      "text-3xl font-serif font-medium hover:text-primary transition-colors flex items-center gap-3",
+                      activeSection === link.href.substring(1) ? "text-primary" : "text-muted-foreground"
                     )}
                   >
-                    <link.icon className="w-6 h-6 mb-2" />
-                    <span className="text-sm font-medium">{link.name}</span>
+                    <link.icon className="w-6 h-6" />
+                    {link.name}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
