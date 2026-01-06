@@ -24,8 +24,8 @@ const experiences = [
     role: "REACT DEVELOPER INTERN",
     period: "July 2025 – August 2025",
     responsibilities: [
-      "Designed and implemented a React-based managerial dashboard module to provide secure login, consolidated reports, shop-level insights, and efficient management across multiple service locations.",
-      "Improved system stability and usability by resolving frontend issues, refactoring components, enhancing UI design, and incorporating user feedback to streamline workflows and overall system interaction."
+      "Designed a React-based managerial dashboard for secure multi-location management and analytics",
+      "Enhanced system stability and UI/UX by resolving frontend issues and streamlining workflows",
     ],
   },
   {
