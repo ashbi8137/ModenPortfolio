@@ -30,7 +30,9 @@ export default function Contact() {
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init('Q1V3bVPwWqliIW56K')
+    emailjs.init({
+      publicKey: 'Q1V3bVPwWqliIW56K',
+    })
   }, [])
 
   // Show a random success style when notification changes to success
@@ -47,17 +49,17 @@ export default function Contact() {
       const timer = setTimeout(() => {
         setNotification({ type: null, message: '' });
       }, 7000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [notification.type]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Reset notification
     setNotification({ type: null, message: '' });
-    
+
     // Validate form
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast({
@@ -66,9 +68,9 @@ export default function Contact() {
         variant: "destructive",
         duration: 3000,
       });
-      setNotification({ 
-        type: 'error', 
-        message: 'Please fill in all fields before sending.' 
+      setNotification({
+        type: 'error',
+        message: 'Please fill in all fields before sending.'
       });
       return;
     }
@@ -76,8 +78,8 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const currentTime = new Date().toLocaleString('en-US', { 
-        hour: 'numeric', 
+      const currentTime = new Date().toLocaleString('en-US', {
+        hour: 'numeric',
         minute: 'numeric',
         hour12: true,
         year: 'numeric',
@@ -105,12 +107,12 @@ export default function Contact() {
           className: "bg-green-100 border-green-200 text-green-800",
           duration: 4000,
         });
-        
-        setNotification({ 
-          type: 'success', 
-          message: 'Message sent successfully! Thanks for reaching out.' 
+
+        setNotification({
+          type: 'success',
+          message: 'Message sent successfully! Thanks for reaching out.'
         });
-        
+
         setFormData({
           name: "",
           email: "",
@@ -127,10 +129,10 @@ export default function Contact() {
         description: "Oops! Something went wrong. Please try again.",
         duration: 4000,
       });
-      
-      setNotification({ 
-        type: 'error', 
-        message: 'Failed to send message. Please try again.' 
+
+      setNotification({
+        type: 'error',
+        message: 'Failed to send message. Please try again.'
       });
     } finally {
       setIsSubmitting(false);
@@ -163,7 +165,7 @@ export default function Contact() {
           <Card className="bg-card/50 backdrop-blur-sm border-border/50">
             <CardContent className="p-8">
               <div className="space-y-6">
-                <a 
+                <a
                   href="mailto:ashputhusseri@gmail.com"
                   className="flex items-center gap-4 p-4 rounded-lg bg-primary/5 transition-colors hover:bg-primary/10"
                 >
@@ -178,7 +180,7 @@ export default function Contact() {
                   </div>
                 </a>
 
-                <a 
+                <a
                   href="tel:+918137840842"
                   className="flex items-center gap-4 p-4 rounded-lg bg-primary/5 transition-colors hover:bg-primary/10"
                 >
@@ -266,15 +268,15 @@ export default function Contact() {
                     disabled={isSubmitting}
                   />
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full transition-all duration-200 hover:scale-[1.02]" 
+                <Button
+                  type="submit"
+                  className="w-full transition-all duration-200 hover:scale-[1.02]"
                   disabled={isSubmitting}
                 >
                   <Send className={`h-4 w-4 mr-2 ${isSubmitting ? 'animate-pulse' : ''}`} />
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
-                
+
                 {notification.type === 'success' && successStyle === 0 && (
                   <div className="mt-4">
                     <div className="bg-card border border-border rounded-md p-4 shadow-sm backdrop-blur-sm">
@@ -290,7 +292,7 @@ export default function Contact() {
                           <h3 className="text-sm font-medium">Message Sent</h3>
                           <p className="text-xs text-muted-foreground mt-0.5">{notification.message}</p>
                         </div>
-                        <button 
+                        <button
                           onClick={() => setNotification({ type: null, message: '' })}
                           className="ml-2 text-muted-foreground hover:text-foreground transition-colors"
                           type="button"
@@ -303,7 +305,7 @@ export default function Contact() {
                     </div>
                   </div>
                 )}
-                
+
                 {notification.type === 'success' && successStyle === 1 && (
                   <div className="mt-4">
                     <div className="bg-gradient-to-r from-primary/10 to-card border border-border rounded-md p-4 shadow-sm">
@@ -319,7 +321,7 @@ export default function Contact() {
                           </div>
                           <p className="text-xs text-muted-foreground mt-1.5 ml-7">{notification.message}</p>
                         </div>
-                        <button 
+                        <button
                           onClick={() => setNotification({ type: null, message: '' })}
                           className="ml-2 text-muted-foreground hover:text-foreground transition-colors"
                           type="button"
@@ -349,7 +351,7 @@ export default function Contact() {
                           <h3 className="text-sm font-medium text-accent-foreground">Success!</h3>
                           <p className="text-xs text-muted-foreground mt-0.5">{notification.message}</p>
                         </div>
-                        <button 
+                        <button
                           onClick={() => setNotification({ type: null, message: '' })}
                           className="ml-2 text-muted-foreground hover:text-foreground transition-colors"
                           type="button"
@@ -362,13 +364,13 @@ export default function Contact() {
                     </div>
                   </div>
                 )}
-                
+
                 {notification.type === 'error' && (
                   <div className="mt-4 p-3 rounded-md relative bg-red-50/50 text-red-800 border border-red-200/70">
                     <div className="flex items-center">
                       <span className="text-sm mr-2">❌</span>
                       <p className="text-xs">{notification.message}</p>
-                      <button 
+                      <button
                         onClick={() => setNotification({ type: null, message: '' })}
                         className="ml-auto text-red-400 hover:text-red-600 transition-colors"
                         type="button"

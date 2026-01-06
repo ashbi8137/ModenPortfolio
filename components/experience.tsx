@@ -19,6 +19,16 @@ const experiences = [
     ],
   },
   {
+    company: "PETAERA Technologies",
+    logo: "/experience/petaera.png",
+    role: "REACT DEVELOPER INTERN",
+    period: "July 2025 – August 2025",
+    responsibilities: [
+      "Designed and implemented a React-based managerial dashboard module to provide secure login, consolidated reports, shop-level insights, and efficient management across multiple service locations.",
+      "Improved system stability and usability by resolving frontend issues, refactoring components, enhancing UI design, and incorporating user feedback to streamline workflows and overall system interaction."
+    ],
+  },
+  {
     company: "Department of Automation Cell, IIT Palakkad",
     logo: "/experience/IIT_PKD_logo.jpg",
     role: "RESEARCH INTERN",

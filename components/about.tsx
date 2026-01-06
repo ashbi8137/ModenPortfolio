@@ -6,20 +6,28 @@ import { RevealOnScroll } from "@/components/RevealOnScroll"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const technologies = [
-  { name: "JavaScript", icon: "js" },
+  // Languages
   { name: "TypeScript", icon: "typescript" },
-  { name: "Angular", icon: "angular" },
+  { name: "JavaScript", icon: "js" },
+  { name: "C++", icon: "c++" },
+  // Frameworks & Libraries
+  { name: "React", icon: "react" },
   { name: "React Native", icon: "react" },
   { name: "Next.js", icon: "react" },
+  { name: "Angular", icon: "angular" },
   { name: "Tailwind CSS", icon: "tailwind" },
   { name: "Bootstrap", icon: "bootstrap" },
-  { name: "CSS", icon: "css" },
-  { name: "C++", icon: "c++" },
-  { name: "Python", icon: "python" },
-  { name: "SQL", icon: "database" },
-  { name: "PostgreSQL", icon: "database" },
-  { name: "Supabase", icon: "database" },
+  { name: "Framer Motion", icon: "framer" },
+  // Tools & Platforms
+  { name: "Git", icon: "git" },
+  { name: "GitHub", icon: "github" },
   { name: "Docker", icon: "docker" },
+  { name: "Figma", icon: "figma" },
+  { name: "Expo", icon: "expo" },
+  // Backend & DB
+  { name: "PostgreSQL", icon: "database" },
+  { name: "MySQL", icon: "database" },
+  { name: "REST APIs", icon: "api" },
 ]
 
 const skills = [

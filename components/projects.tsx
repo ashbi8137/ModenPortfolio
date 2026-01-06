@@ -172,9 +172,11 @@ function BentoCard({ project, index }: { project: any; index: number }) {
         </p>
 
         <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-          <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">View Live</a>
-          </Button>
+          {project.liveUrl && (
+            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">View Live</a>
+            </Button>
+          )}
           <Button size="sm" variant="outline" className="bg-transparent border-border/20 text-foreground hover:bg-background/10" asChild>
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Code</a>
           </Button>
