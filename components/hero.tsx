@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Download, Send, Github, Linkedin, Code } from "lucide-react"
+import { Download, Send, Github, Linkedin, Code, Rocket } from "lucide-react"
 import { motion } from "framer-motion"
 
 const roles = [
@@ -56,6 +56,29 @@ export default function Hero() {
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background"></div>
 
+      {/* Animated Launch Badge — Top Right */}
+      <motion.a
+        href="#projects"
+        className="absolute top-24 right-4 md:top-28 md:right-8 z-20 group cursor-pointer"
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="relative">
+          {/* Subtle glow */}
+          <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/40 to-accent/30 blur-sm" />
+
+          {/* Badge content */}
+          <div className="relative flex items-center gap-2 px-4 py-2.5 rounded-2xl border border-primary/30 bg-background/80 backdrop-blur-xl shadow-lg group-hover:border-primary/60 group-hover:shadow-primary/20 transition-all duration-300">
+            <Rocket className="w-4 h-4 text-primary" />
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-widest text-primary/70 font-semibold">Launching Soon</span>
+              <span className="text-xs font-bold text-foreground">Pay & Promise</span>
+            </div>
+          </div>
+        </div>
+      </motion.a>
+
       <div className="container max-w-5xl px-6">
         <motion.div
           className="text-center"
@@ -63,27 +86,18 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Badge */}
-          <motion.div
-            className="inline-block mb-8"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            <span className="px-5 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs uppercase tracking-widest font-medium backdrop-blur-sm">
-              Designing the Future
-            </span>
-          </motion.div>
+
 
           {/* Name */}
           <motion.h1
-            className="text-6xl md:text-8xl font-bold font-serif mb-8 tracking-tight leading-tight"
+            className="text-6xl md:text-8xl font-bold font-serif mb-6 tracking-tight leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
           >
             <span className="text-foreground">Ashbin</span> <span className="text-primary italic">P A</span>
           </motion.h1>
+
 
           {/* Typing Effect */}
           <motion.div

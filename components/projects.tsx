@@ -20,6 +20,17 @@ const projects = [
     inProgress: true,
   },
   {
+    id: 13,
+    title: "Memora",
+    tags: ["AI", "Next.js", "Supabase", "React Native"],
+    description: "AI-powered reminiscence therapy platform for early-stage Alzheimer's patients with face recognition and personalized memory prompts.",
+    liveUrl: "https://github.com/ashbi8137/Memora",
+    githubUrl: "https://github.com/ashbi8137/Memora",
+    preview: "/projects/memora.png",
+    featured: true,
+    inProgress: true,
+  },
+  {
     id: 1,
     title: "Ar.Shamil P A Portfolio",
     tags: ["Next.js", "Portfolio"],

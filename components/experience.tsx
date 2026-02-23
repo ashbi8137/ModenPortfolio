@@ -1,10 +1,10 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll, useSpring } from "framer-motion"
-import { Card } from "@/components/ui/card"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { RevealOnScroll } from "@/components/RevealOnScroll"
+import { ChevronRight } from "lucide-react"
 
 const experiences = [
   {
@@ -50,7 +50,6 @@ const experiences = [
       "Collaborated with the team using shared utilities and iterative development cycles",
     ],
   },
-
   {
     company: "TINKERHUB-SOE",
     logo: "/experience/tinkerhub.jpg",
@@ -75,99 +74,136 @@ const experiences = [
 ]
 
 export default function Experience() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end end"]
-  })
-
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  })
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   return (
     <section id="experience" className="relative py-24 overflow-hidden">
-      <div className="container max-w-7xl mx-auto px-6" ref={containerRef}>
-        <RevealOnScroll className="mb-20 text-center">
+      <div className="container max-w-7xl mx-auto px-6">
+        <RevealOnScroll className="mb-16 text-center">
           <h2 className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-3">Professional Journey</h2>
           <h3 className="section-title font-serif text-4xl md:text-5xl">Timeline of <span className="text-primary italic">Excellence</span></h3>
         </RevealOnScroll>
 
-        <div className="relative mt-12 mx-auto max-w-5xl">
-          {/* The Golden Path (Central Line) */}
-          <div className="absolute left-9 md:left-1/2 top-0 bottom-0 w-0.5 bg-border/30 transform md:-translate-x-1/2" />
-
-          <motion.div
-            className="absolute left-9 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary origin-top transform md:-translate-x-1/2"
-            style={{ scaleY }}
-          />
-
-          <div className="space-y-24">
-            {experiences.map((exp, index) => (
-              <TimelineItem key={exp.company} experience={exp} index={index} />
-            ))}
-          </div>
+        {/* Interactive Accordion Stack */}
+        <div className="max-w-5xl mx-auto space-y-3">
+          {experiences.map((exp, index) => (
+            <RevealOnScroll key={exp.company} delay={index * 0.06}>
+              <ExperienceRow
+                experience={exp}
+                index={index}
+                isActive={activeIndex === index}
+                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+              />
+            </RevealOnScroll>
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-function TimelineItem({ experience, index }: { experience: any; index: number }) {
-  const isEven = index % 2 === 0
-
+function ExperienceRow({
+  experience,
+  index,
+  isActive,
+  onClick,
+}: {
+  experience: any
+  index: number
+  isActive: boolean
+  onClick: () => void
+}) {
   return (
-    <div className={`relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center ${isEven ? "" : "md:text-right"}`}>
+    <motion.div
+      layout
+      onClick={onClick}
+      className={`relative cursor-pointer rounded-2xl border transition-all duration-500 overflow-hidden ${isActive
+        ? "border-primary/40 bg-card/60 backdrop-blur-xl shadow-[0_0_40px_-12px_rgba(234,179,8,0.15)]"
+        : "border-white/5 bg-card/20 backdrop-blur-sm hover:border-white/15 hover:bg-card/30"
+        }`}
+    >
+      {/* Collapsed Row — Always Visible */}
+      <div className="relative grid grid-cols-[2.5rem_3rem_1fr_1.5rem] md:grid-cols-[3rem_3.5rem_1fr_auto_1.5rem] items-center gap-3 md:gap-5 p-5 md:p-6">
+        {/* Index Number */}
+        <span className={`font-serif text-3xl md:text-4xl font-bold transition-colors duration-300 ${isActive ? "text-primary" : "text-muted-foreground/20"
+          }`}>
+          {String(index + 1).padStart(2, "0")}
+        </span>
 
-      {/* Timeline Node (Golden Marker) */}
-      <div className="absolute left-[34px] md:left-1/2 top-0 w-4 h-4 rounded-full bg-background border-2 border-primary transform -translate-x-1/2 z-10 md:top-8 shadow-[0_0_15px_rgba(234,179,8,0.5)]">
-        <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping opacity-75" />
+        {/* Company Logo */}
+        <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl overflow-hidden border transition-all duration-300 flex-shrink-0 ${isActive ? "border-primary/30 shadow-lg shadow-primary/10" : "border-white/10"
+          }`}>
+          <img
+            src={experience.logo}
+            alt={experience.company}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Role & Company */}
+        <div className="flex-1 min-w-0">
+          <h4 className={`text-lg md:text-xl font-bold font-serif transition-colors duration-300 truncate ${isActive ? "text-foreground" : "text-foreground/80"
+            }`}>
+            {experience.role}
+          </h4>
+          <p className="text-sm text-muted-foreground truncate">{experience.company}</p>
+        </div>
+
+        {/* Period */}
+        <span className="hidden sm:block text-xs text-primary/70 font-medium tracking-wider uppercase whitespace-nowrap">
+          {experience.period}
+        </span>
+
+        {/* Arrow */}
+        <motion.div
+          animate={{ rotate: isActive ? 90 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-muted-foreground/40"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </motion.div>
       </div>
 
-      {/* spacer for mobile layout alignment */}
-      <div className={`md:hidden pl-20 ${isEven ? "" : ""}`}>
-        {/* Mobile content wrapper is below */}
-      </div>
+      {/* Expanded Content */}
+      <AnimatePresence>
+        {isActive && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 md:px-6 pb-6 pt-0">
+              {/* Gradient divider */}
+              <div className="w-full h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent mb-5" />
 
-      {/* Content Side */}
-      <div className={`pl-20 md:pl-0 ${isEven ? "md:col-start-1 md:text-right" : "md:col-start-2 md:text-left"}`}>
-        <RevealOnScroll delay={index * 0.1}>
-          <div className={`relative group ${isEven ? "md:pr-8" : "md:pl-8"}`}>
-            {/* Date Badge */}
-            <div className={`mb-3 inline-block ${isEven ? "md:ml-auto" : "md:mr-auto"}`}>
-              <span className="text-primary font-serif italic text-lg">{experience.period}</span>
-            </div>
-
-            <Card className="p-8 border border-white/10 bg-card/40 backdrop-blur-xl relative overflow-hidden group-hover:border-primary/30 transition-colors duration-500">
-              <div className={`absolute top-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0 transition-all duration-700 ${isEven ? "right-0" : "left-0"}`} />
-
-              <div className={`flex flex-col gap-4 ${isEven ? "md:items-end" : "md:items-start"}`}>
-                <div className="w-12 h-12 rounded-lg bg-white/5 p-2 border border-white/10 mb-2">
-                  <img src={experience.logo} alt={experience.company} className="w-full h-full object-contain" />
-                </div>
-
-                <div>
-                  <h4 className="text-2xl font-serif font-bold text-foreground mb-1">{experience.role}</h4>
-                  <p className="text-muted-foreground text-sm tracking-widest uppercase font-medium mb-4">{experience.company}</p>
-                </div>
+              {/* Mobile period */}
+              <div className="sm:hidden mb-4">
+                <Badge variant="outline" className="border-primary/20 text-primary text-[10px] tracking-wider uppercase bg-primary/5">
+                  {experience.period}
+                </Badge>
               </div>
 
-              <ul className={`space-y-3 text-muted-foreground/80 leading-relaxed ${isEven ? "md:text-right" : "md:text-left"}`}>
+              {/* Responsibilities */}
+              <div className="space-y-3 ml-0 md:ml-[calc(2rem+3.5rem+1.5rem)]">
                 {experience.responsibilities.map((item: string, i: number) => (
-                  <li key={i} className="text-sm">
-                    {item}
-                  </li>
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 + 0.15, duration: 0.4 }}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/50 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground/80 leading-relaxed">{item}</p>
+                  </motion.div>
                 ))}
-              </ul>
-            </Card>
-          </div>
-        </RevealOnScroll>
-      </div>
-
-      {/* Empty Side for Alternate Layout */}
-      <div className={`hidden md:block ${isEven ? "md:col-start-2" : "md:col-start-1"}`} />
-    </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   )
 }
