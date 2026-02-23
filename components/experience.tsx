@@ -8,6 +8,17 @@ import { RevealOnScroll } from "@/components/RevealOnScroll"
 
 const experiences = [
   {
+    company: "Pay & Promise",
+    logo: "/experience/pay-and-promise.png",
+    role: "CO-FOUNDER",
+    period: "Dec 2025 – Present",
+    responsibilities: [
+      "Building a social habit-staking platform with Google Cloud OAuth 2.0 and Supabase backend",
+      "Designed camera-only verification with peer-consensus engine for proof-of-work validation",
+      "Implementing UPI payment flows and preparing for Google Play Store launch",
+    ],
+  },
+  {
     company: "SAIT-CUSAT",
     logo: "/experience/sait.png",
     role: "EVENT LEAD",

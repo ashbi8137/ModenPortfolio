@@ -10,6 +10,16 @@ import { cn } from "@/lib/utils"
 
 const projects = [
   {
+    id: 12,
+    title: "Pay & Promise",
+    tags: ["Mobile App", "React Native", "Supabase", "Google Cloud"],
+    description: "Social accountability platform with Google Cloud OAuth 2.0, camera-only verification, decentralized peer-consensus engine, and UPI deep-linking payment flows.",
+    liveUrl: "https://github.com/ashbi8137/pay-and-promise",
+    githubUrl: "https://github.com/ashbi8137/pay-and-promise",
+    preview: "/projects/pay-and-promise.png",
+    inProgress: true,
+  },
+  {
     id: 1,
     title: "Ar.Shamil P A Portfolio",
     tags: ["Next.js", "Portfolio"],

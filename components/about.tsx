@@ -27,6 +27,7 @@ const technologies = [
   // Backend & DB
   { name: "PostgreSQL", icon: "database" },
   { name: "MySQL", icon: "database" },
+  { name: "MongoDB", icon: "database" },
   { name: "REST APIs", icon: "api" },
 ]
 
